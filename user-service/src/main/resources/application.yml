@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: user-service
+  config:
+    import: "configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    prometheus:
+      enabled: true
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+otel:
+  sdk:
+    enabled: true
+  exporter:
+    otlp:
+      endpoint: http://localhost:4317
+      protocol: grpc
+  resource:
+    attributes:
+      service.name: ${spring.application.name}

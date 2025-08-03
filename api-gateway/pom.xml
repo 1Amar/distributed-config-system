@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+    	<groupId>com.example</groupId>
+    	<artifactId>distributed-config-system</artifactId>
+    	<version>1.0.0</version>
+    	<relativePath>../pom.xml</relativePath>
+  	</parent>
+	<groupId>com.amar</groupId>
+	<artifactId>api-gateway</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>api-gateway</name>
+	<description>api-gateway</description>
+	
+	<developers>
+		<developer/>
+	</developers>
+
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	
+	<dependencies>
+	
+		<!-- Spring Boot WebFlux -->
+	    <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-webflux</artifactId>
+	    </dependency>
+    
+		<dependency>
+   			<groupId>org.springframework.cloud</groupId>
+    		<artifactId>spring-cloud-starter-gateway</artifactId>
+		</dependency>
+		
+		<dependency>
+  			<groupId>org.springframework.cloud</groupId>
+  			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.springframework.cloud</groupId>
+    		<artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
+		</dependency>
+		
+		<!-- Redis Client -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+		</dependency>
+		
+		<!-- Spring Cloud Gateway Rate Limiter -->
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-gateway</artifactId>
+		</dependency>
+		
+		<dependency>
+  			<groupId>io.micrometer</groupId>
+  			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/io.opentelemetry/opentelemetry-api -->
+		<dependency>
+		    <groupId>io.opentelemetry</groupId>
+		    <artifactId>opentelemetry-api</artifactId>
+		</dependency>
+		
+		<!-- Micrometer Tracing with OpenTelemetry bridge -->
+		<dependency>
+		  <groupId>io.micrometer</groupId>
+		  <artifactId>micrometer-tracing-bridge-otel</artifactId>
+		</dependency>
+		
+		<!-- Required for exporting traces via OTLP -->
+		<dependency>
+		  <groupId>io.opentelemetry</groupId>
+		  <artifactId>opentelemetry-exporter-otlp</artifactId>
+		</dependency>
+		
+		<!-- Required for context propagation -->
+		<dependency>
+		  <groupId>io.opentelemetry</groupId>
+		  <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
+		</dependency>
+
+
+		<dependency>
+  			<groupId>org.springframework.boot</groupId>
+  			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>api-gateway</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.2.0</version>
+		        <executions>
+		          <execution>
+		            <goals>
+		              <goal>repackage</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+			</plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-compiler-plugin</artifactId>
+			    <version>3.11.0</version>
+			    <configuration>
+			      <source>17</source>
+			      <target>17</target>
+			      <compilerArgs>
+			        <arg>-parameters</arg>
+			      </compilerArgs>
+			    </configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
